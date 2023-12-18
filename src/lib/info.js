@@ -3,25 +3,23 @@
 // feel free to remove this file.
 
 // URL of your website
-export const website = 'https://sveltekit-blog-template.vercel.app'
+export const website = 'https://kana.jetzt'
 
-export const firstName = 'Jordan'
-export const lastName = 'Doe'
+export const firstName = 'Kai'
+export const lastName = '/ KANA'
 export const name = `${firstName} ${lastName}`
 
 // Used for the landing page & footer of posts
-export const avatar = 'https://picsum.photos/id/203/250/250'
+export const avatar = 'https://avatars.githubusercontent.com/u/41547570?v=4'
 export const bio = `\
-I’m ${firstName}, a software engineer based in Canada. Lorem ipsum dolor sit amet, consectetur
-adipiscing elit. Phasellus accumsan quam at eros malesuada, id luctus lectus efficitur. Nulla
-sit amet arcu mi. Duis quis mauris malesuada, posuere orci et, pulvinar nisl. Nam malesuada
-vehicula sapien vitae sagittis.
+I’m ${firstName}, a software engineer based in Germany.
+Currently, my focus is on building games, plugins, and addons for and with Godot. Apart from that, I'm web deving since 2018.
 `
 
 // Your social usernames, empty strings won't be used.
 // For sake of the live demo, I'm using `username/repo` for github,
 // but you can replace with just your username.
-export const github = 'mattjennings/sveltekit-blog-template'
-export const twitter = ''
+export const github = 'KANAjetzt'
+export const twitter = 'KANAjetzt'
 export const linkedin = ''
 export const instagram = ''

@@ -1,8 +1,7 @@
 <script>
   import '../app.css'
   import '../prism.css'
-  import MoonIcon from 'heroicons-svelte/solid/MoonIcon.svelte'
-  import SunIcon from 'heroicons-svelte/solid/SunIcon.svelte'
+  import {Icon, Moon, Sun} from "svelte-hero-icons";
   import { browser } from '$app/environment'
   import { name } from '$lib/info'
   import { page } from '$app/stores'
@@ -46,8 +45,8 @@
           }
         }}
       >
-        <MoonIcon class="hidden text-zinc-500 dark:block" />
-        <SunIcon class="block text-zinc-400 dark:hidden" />
+        <Icon src={Sun} class="hidden text-zinc-500 dark:block" />
+        <Icon src={Moon} class="block text-zinc-400 dark:hidden" />
       </button>
     </header>
     <main
