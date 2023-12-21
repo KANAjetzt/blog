@@ -6,8 +6,6 @@ cover_alt: 'Godot blue robot logo with all checks have passed text underneath.'
 preview: GitHub Actions allow you to run actions on specific events, for example, on PRs and commit pushes. Here is how we use them to run GUT-Tests for the Mod Loader Repo.
 ---
 
-![Cover](./cover.png)
-
 ## Preamble
 
 If you've come across this post, I assume you're already familiar with what a [GitHub Action](https://github.com/features/actions) is or [GUT](https://github.com/bitwes/Gut).

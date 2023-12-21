@@ -18,8 +18,10 @@
 
 <div class="flex flex-col min-h-screen">
   <div class="flex flex-col flex-grow w-full">
-    <header class="flex items-center justify-center w-full py-4 lg:pb-8 backdrop-brightness-90 backdrop-blur-lg">
-      <div class="flex items-center justify-between w-full max-w-3xl ">
+    <header
+      class="flex items-center justify-center w-full py-4 lg:pb-8 backdrop-brightness-90 backdrop-blur-lg"
+    >
+      <div class="flex items-center justify-between w-full max-w-3xl">
         <a
           class="text-lg font-bold sm:text-2xl !text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-teal-400 dark:to-teal-400"
           href="/"
