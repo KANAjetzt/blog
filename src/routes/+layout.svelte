@@ -57,3 +57,40 @@
     </main>
   </div>
 </div>
+
+<style>
+  :global(:root) {
+    --scrollbar-color-primary: hsla(0, 0%, 36%, 0.466);
+    --scrollbar-color-secondary: hsla(0, 0%, 85%, 0.25);
+    --scrollbar-color-secondary-a-50: hsla(0, 0%, 85%, 0.5);
+  }
+
+  /* --- Custom Scrollbar for Codeblocks --- */
+  :global(pre) {
+    /* Foreground, Background */
+    scrollbar-color: var(--scrollbar-color-secondary) var(--scrollbar-color-primary);
+  }
+  :global(pre::-webkit-scrollbar) {
+    width: 10px; /* Mostly for vertical scrollbars */
+    height: 10px; /* Mostly for horizontal scrollbars */
+  }
+  :global(pre::-webkit-scrollbar-thumb) {
+    /* Foreground */
+    border-radius: 10px;
+    background-color: var(--scrollbar-color-secondary);
+    background-image: -webkit-linear-gradient(
+      90deg,
+      transparent,
+      --scrollbar-color-secondary-a-50,
+      transparent,
+      transparent
+    );
+  }
+
+  :global(pre::-webkit-scrollbar-track) {
+    /* Background */
+    margin: 10px;
+    background: var(--scrollbar-color-primary);
+    border-radius: 10px;
+  }
+</style>
