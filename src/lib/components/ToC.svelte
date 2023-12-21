@@ -7,14 +7,14 @@
 
   let elements = []
   let headings = post.headings
+  let activeHeading = headings[0]
+  let scrollY
+  let is_clicked = false
 
   onMount(() => {
     updateHeadings()
     setActiveHeading()
   })
-
-  let activeHeading = headings[0]
-  let scrollY
 
   function updateHeadings() {
     headings = post.headings
@@ -26,6 +26,11 @@
     }
   }
   function setActiveHeading() {
+    if (is_clicked) {
+      is_clicked = false
+      return
+    }
+
     scrollY = window.scrollY
 
     const visibleIndex =
@@ -53,14 +58,27 @@
     <ul class="flex flex-col gap-2">
       {#each headings as heading}
         <li
-          class="pl-2 transition-colors border-teal-500 heading text-zinc-500 dark:text-zinc-600 hover:text-zinc-900 dark:hover:text-zinc-100"
+          class="pl-2 transition-colors border-teal-500 heading text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
           class:active={activeHeading === heading}
           style={`--depth: ${
             // consider h1 and h2 at the same depth, as h1 will only be used for page title
             Math.max(0, heading.depth - 1)
           }`}
         >
-          <a href={`#${heading.id}`}>{heading.value}</a>
+          <a
+            href={`#${heading.id}`}
+            on:click={(e) => {
+              // Prevent the scroll event from triggering a active heading update
+              is_clicked = true
+
+              const clicked_heading_id = e.target.hash.replace('#', '')
+              const clicked_heading_index = headings.findIndex(
+                (heading) => heading.id === clicked_heading_id
+              )
+
+              activeHeading = headings[clicked_heading_index]
+            }}>{heading.value}</a
+          >
         </li>
       {/each}
     </ul>
