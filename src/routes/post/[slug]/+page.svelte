@@ -129,7 +129,7 @@
   @media screen(lg) {
     .root {
       /* 42rem matches max-w-2xl */
-      grid-template-columns: 1fr 42rem 1fr;
+      grid-template-columns: 1fr 46rem 1fr;
     }
   }
 </style>
