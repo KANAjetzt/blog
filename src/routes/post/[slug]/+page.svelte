@@ -31,6 +31,8 @@
       history.back()
     }
   }
+
+  console.log(data)
 </script>
 
 <svelte:head>
@@ -75,16 +77,22 @@
   <div class="w-full mx-auto overflow-x-hidden">
     <article>
       <header class="flex flex-col">
+        <img
+          class="absolute left-0 top-0 scale-110 blur-lg -z-50 brightness-125 dark:brightness-50"
+          src={`/posts/${data.post.slug}/${data.post.cover}`}
+          alt={data.post.cover_alt}
+        />
+
         <h1
           class="mt-6 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl"
         >
           {data.post.title}
         </h1>
-        <PostDate class="text-sm sm:text-base" post={data.post} decorate collapsed />
+        <PostDate class="text-sm sm:text-base text-zinc-300 my-10" post={data.post} decorate collapsed />
       </header>
 
       <!-- render the post -->
-      <div class="prose dark:prose-invert">
+      <div class="prose dark:prose-invert mt-20">
         <svelte:component this={data.component} />
       </div>
     </article>

@@ -1,6 +1,8 @@
 ---
 title: Creating a GitHub Action to run Godot GUT Tests
 date: 2023-12-18
+cover: 'cover.png'
+cover_alt: 'Godot blue robot logo with all checks have passed text underneath.'
 preview: GitHub Actions allow you to run actions on specific events, for example, on PRs and commit pushes. Here is how we use them to run GUT-Tests for the Mod Loader Repo.
 ---
 
@@ -23,13 +25,13 @@ If not, here's a quick overview and some links for you. Feel free to skip this p
 
 - GUT is used to write unit and integration tests in Godot.
 - What is a unit test?
-    - Unit Tests test a unit of your code, most times a unit will be one function, and you will call a function with some input and check if you get the desired output.
+  - Unit Tests test a unit of your code, most times a unit will be one function, and you will call a function with some input and check if you get the desired output.
 - What is integration testing?
-    - Integration testing simulates the actual usage of your software, instead of testing the individual component/functions. The input for integration tests, for example, is starting the game → opening the inventory and checking if the inventory is actually open. This allows you to check if all the individual parts of your program work together correctly.
+  - Integration testing simulates the actual usage of your software, instead of testing the individual component/functions. The input for integration tests, for example, is starting the game → opening the inventory and checking if the inventory is actually open. This allows you to check if all the individual parts of your program work together correctly.
 - Why do you want to run tests?
-    - Allows you to see if you broke a part of your program without touching it.
-    - Simplifies Code Review (You don’t have to test every PR manually, or yolo merge).
-    - You get a nice green checkmark each time your tests pass ✅
+  - Allows you to see if you broke a part of your program without touching it.
+  - Simplifies Code Review (You don’t have to test every PR manually, or yolo merge).
+  - You get a nice green checkmark each time your tests pass ✅
 
 ## What I Built
 
@@ -37,8 +39,8 @@ This will be a write-up of what I did for the Mod Loader Repo. So, this is not s
 
 ![Art](/imgs/memes/art.png)
 
-You can find my art on the [Godot Mod Loader Repo](https://github.com/GodotModding/godot-mod-loader/tree/main/.github/workflows).   
-You can also speedrun this post and just look [at the PR](https://github.com/GodotModding/godot-mod-loader/pull/360) that includes all of this.   
+You can find my art on the [Godot Mod Loader Repo](https://github.com/GodotModding/godot-mod-loader/tree/main/.github/workflows).  
+You can also speedrun this post and just look [at the PR](https://github.com/GodotModding/godot-mod-loader/pull/360) that includes all of this.  
 Here is the structure I ended up with:
 
 ```
@@ -60,7 +62,7 @@ In the following, I will (try) to explain what each of these files do.
 Let's dive right in, here is the full test workflow file.
 
 <details open>
-<summary>🔴 We are here → <code>.github/workflows/tests.yml`</code></summary>
+<summary>🔴 We are here → <code>.github/workflows/tests.yml</code></summary>
 
 ```yaml
 # Inspired by https://github.com/bitbrain/beehave/blob/godot-4.x/.github/workflows/unit-tests.yml
@@ -123,6 +125,7 @@ jobs: # <-- Here we go, the job
 					godot-test-project: ${{ github.workspace }}/test # <-- This is where
 					# The `checkout` action put the code
 ```
+
 </details>
 
 ## **Get the Current Code of the PR**
@@ -221,6 +224,7 @@ runs: # <-- We are in a job already here
 				path: ${{ inputs.godot-cache-path }}
 				key: ${{ steps.godot-restore-cache.outputs.cache-primary-key }}
 ```
+
 </details>
 
 ### Passing `inputs` with `with`
@@ -244,7 +248,7 @@ Both will require a `key` and the `path` to the files.
 [A key can be generated in many ways](https://github.com/actions/cache?tab=readme-ov-file#creating-a-cache-key), and for my use case, a simple `echo "some string"` is enough.
 
 ```yaml
-- name: "Set Cache Name"
+- name: 'Set Cache Name'
   shell: bash
   run: |
     echo "CACHE_NAME=${{ runner.OS }}-Godot_v${{ inputs.godot-version }}-${{ inputs.godot-status-version }}" >> "$GITHUB_ENV"
@@ -255,7 +259,7 @@ Both will require a `key` and the `path` to the files.
 We call `actions/cache/restore@v3`, give it an `id`, and pass the `path` to the downloaded Godot file and the `key` that has been created. The cache action will check for cached files for this `key` now and return `cache-hit` as either `true` or `false`.
 
 ```yaml
-- name: "Godot Cache Restore"
+- name: 'Godot Cache Restore'
   uses: actions/cache/restore@v3
   id: godot-restore-cache
   with:
@@ -274,7 +278,7 @@ if: steps.godot-restore-cache.outputs.cache-hit != 'true'
 After the download step (that we have not yet talked about), we can store these files with `actions/cache/save@v3`. I skip this step if we already have something cached and pass the same inputs as the restore action gets.
 
 ```yaml
-- name: "Godot Cache Save"
+- name: 'Godot Cache Save'
   if: steps.godot-restore-cache.outputs.cache-hit != 'true'
   uses: actions/cache/save@v3
   with:
@@ -377,20 +381,20 @@ I also copied the example `.gutconfig.json`, all I changed is the `"dirs"` array
 
 ```json
 {
-  "dirs":["res://Unit/"],
-  "double_strategy":"partial",
-  "ignore_pause":false,
-  "include_subdirs":true,
-  "inner_class":"",
-  "log_level":3,
-  "opacity":100,
-  "prefix":"test_",
-  "selected":"",
-  "should_exit":true,
-  "should_maximize":true,
-  "suffix":".gd",
-  "tests":[],
-  "unit_test_name":""
+  "dirs": ["res://Unit/"],
+  "double_strategy": "partial",
+  "ignore_pause": false,
+  "include_subdirs": true,
+  "inner_class": "",
+  "log_level": 3,
+  "opacity": 100,
+  "prefix": "test_",
+  "selected": "",
+  "should_exit": true,
+  "should_maximize": true,
+  "suffix": ".gd",
+  "tests": [],
+  "unit_test_name": ""
 }
 ```
 
@@ -423,7 +427,6 @@ test/                                   export-ignore
 Now back to the GitHub Action!
 
 ## Run GUT Test Action
-
 
 <details open>
 	<summary>
@@ -516,6 +519,7 @@ runs:
 																									# The argument is `$1` in the .sh script.
 
 ```
+
 </details>
 
 Most of what is happening in this action has already been covered, so just a quick overview:
@@ -579,40 +583,34 @@ jobs:
 			godot-version: '3.5.3'
 
 ```
+
 </details>
 
 The `tests.yml` workflow is defined to run `on:` `workflow_call` and `workflow_dispatch`.
 
 ```yaml
 on:
-  workflow_call:
-    [...]
+  workflow_call: [...]
 
-  workflow_dispatch:
-    [...]
-
+  workflow_dispatch: [...]
 ```
 
 So we tell GitHub in the `main.yml` to run the `tests.yml` workflow `on:`
 
 ```yaml
 on:
-  push:
-    [...]
-  pull_request:
-    [...]
-
+  push: [...]
+  pull_request: [...]
 ```
 
 Now we just add the call to action in the `jobs:` section:
 
 ```yaml
 tests:
-  name: "Running GUT tests on Godot 3.5.3"
+  name: 'Running GUT tests on Godot 3.5.3'
   uses: ./.github/workflows/tests.yml
   with:
     godot-version: '3.5.3'
-
 ```
 
 And there we go 🎉

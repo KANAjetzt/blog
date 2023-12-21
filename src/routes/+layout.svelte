@@ -17,37 +17,39 @@
 </script>
 
 <div class="flex flex-col min-h-screen">
-  <div class="flex flex-col flex-grow w-full px-4 py-2">
-    <header class="flex items-center justify-between w-full max-w-3xl py-4 mx-auto lg:pb-8">
-      <a
-        class="text-lg font-bold sm:text-2xl !text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-teal-600 dark:to-teal-400"
-        href="/"
-      >
-        {name}
-      </a>
+  <div class="flex flex-col flex-grow w-full">
+    <header class="flex items-center justify-center w-full py-4 lg:pb-8 backdrop-brightness-90 backdrop-blur-lg">
+      <div class="flex items-center justify-between w-full max-w-3xl ">
+        <a
+          class="text-lg font-bold sm:text-2xl !text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-teal-400 dark:to-teal-400"
+          href="/"
+        >
+          {name}
+        </a>
 
-      <button
-        type="button"
-        role="switch"
-        aria-label="Toggle Dark Mode"
-        aria-checked={isDarkMode}
-        class="w-5 h-5 sm:h-8 sm:w-8 sm:p-1"
-        on:click={() => {
-          isDarkMode = !isDarkMode
-          localStorage.setItem('isDarkMode', isDarkMode.toString())
+        <button
+          type="button"
+          role="switch"
+          aria-label="Toggle Dark Mode"
+          aria-checked={isDarkMode}
+          class="w-5 h-5 sm:h-8 sm:w-8 sm:p-1"
+          on:click={() => {
+            isDarkMode = !isDarkMode
+            localStorage.setItem('isDarkMode', isDarkMode.toString())
 
-          disableTransitionsTemporarily()
+            disableTransitionsTemporarily()
 
-          if (isDarkMode) {
-            document.querySelector('html').classList.add('dark')
-          } else {
-            document.querySelector('html').classList.remove('dark')
-          }
-        }}
-      >
-        <Icon src={Sun} class="hidden text-zinc-500 dark:block" />
-        <Icon src={Moon} class="block text-zinc-400 dark:hidden" />
-      </button>
+            if (isDarkMode) {
+              document.querySelector('html').classList.add('dark')
+            } else {
+              document.querySelector('html').classList.remove('dark')
+            }
+          }}
+        >
+          <Icon src={Sun} class="hidden text-zinc-500 dark:block" />
+          <Icon src={Moon} class="block text-zinc-400 dark:hidden" />
+        </button>
+      </div>
     </header>
     <main
       class="flex flex-col flex-grow w-full mx-auto"
