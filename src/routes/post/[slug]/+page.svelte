@@ -84,7 +84,7 @@
       </header>
 
       <!-- render the post -->
-      <div class="prose dark:prose-invert ">
+      <div class="prose dark:prose-invert">
         <svelte:component this={data.component} />
       </div>
     </article>
@@ -128,8 +128,8 @@
 
   @media screen(lg) {
     .root {
-      /* 42rem matches max-w-2xl */
-      grid-template-columns: 1fr 46rem 1fr;
+      /* 48rem matches max-w-3xl */
+      grid-template-columns: 1fr 48rem 1fr;
     }
   }
 </style>
