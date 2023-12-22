@@ -4,6 +4,7 @@ date: 2023-12-18
 cover: 'cover.png'
 cover_alt: 'Godot blue robot logo with all checks have passed text underneath.'
 preview: Here is how we use GitHub Actions to run GUT-Tests on the Mod Loader Repo.
+preview_image: 'preview.png'
 ---
 
 ## Preamble

@@ -54,7 +54,7 @@
       </div>
     </header>
     <main
-      class="flex flex-col flex-grow w-full mx-auto"
+      class="flex flex-col flex-grow w-full mx-auto max-w-3xl"
       class:max-w-2xl={!$page.data.layout?.fullWidth}
     >
       <slot />
