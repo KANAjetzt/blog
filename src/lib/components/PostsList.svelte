@@ -20,11 +20,15 @@
         </PostPreview>
       </div>
       {#if post.cover}
-        <img
-          class="rounded-3xl h-full w-full object-cover"
-          src={`/imgs/${post.slug}/${post.preview_image}`}
-          alt={post.cover_alt}
-        />
+        <div class="rounded-3xl h-full w-full overflow-hidden">
+          <a href={`/post/${post.slug}`} data-sveltekit-prefetch>
+            <img
+              class="rounded-3xl h-full w-full object-cover hover:scale-110 transition-transform duration-300"
+              src={`/imgs/${post.slug}/${post.preview_image}`}
+              alt={post.cover_alt}
+            />
+          </a>
+        </div>
       {/if}
     </article>
   {/each}
