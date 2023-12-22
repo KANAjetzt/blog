@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from 'svelte'
   import { website, name, bio, avatar } from '$lib/info.js'
   import ToC from '$lib/components/ToC.svelte'
   import ArrowLeftIcon from '$lib/components/ArrowLeftIcon.svelte'
