@@ -14,7 +14,7 @@
   const url = `${website}/${data.post.slug}`
 
   if (data.post.cover) {
-    ogImage = `${website}/imgs/covers/${data.post.slug}/${data.post.cover}`
+    ogImage = `${website}/imgs/${data.post.slug}/${data.post.cover}`
   } else {
     // generated open-graph image for sharing on social media.
     // see https://og-image.vercel.app/ for more options.
@@ -99,7 +99,7 @@
       {#if data.post.cover}
         <img
           class="rounded-3xl mt-10"
-          src={`/imgs/covers/${data.post.slug}/${data.post.cover}`}
+          src={`/imgs/${data.post.slug}/${data.post.cover}`}
           alt={data.post.cover_alt}
         />
       {/if}

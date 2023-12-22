@@ -3,7 +3,8 @@ title: Creating a GitHub Action to run Godot GUT Tests
 date: 2023-12-18
 cover: 'cover.png'
 cover_alt: 'Godot blue robot logo with all checks have passed text underneath.'
-preview: GitHub Actions allow you to run actions on specific events, for example, on PRs and commit pushes. Here is how we use them to run GUT-Tests for the Mod Loader Repo.
+preview: Here is how we use GitHub Actions to run GUT-Tests on the Mod Loader Repo.
+preview_image: 'preview.png'
 ---
 
 ## Preamble
