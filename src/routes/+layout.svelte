@@ -21,7 +21,7 @@
     <header
       class="flex items-center justify-center w-full py-4 lg:pb-8 backdrop-brightness-90 backdrop-blur-lg"
     >
-      <div class="flex items-center justify-between w-full max-w-3xl">
+      <div class="flex items-center justify-between w-full max-w-3xl px-4 py-2 lg:px-0 lg:py-0">
         <a
           class="text-lg font-bold sm:text-2xl !text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-teal-400 dark:to-teal-400"
           href="/"
@@ -54,20 +54,17 @@
       </div>
     </header>
     <main
-      class="flex flex-col flex-grow w-full mx-auto max-w-3xl"
+      class="flex flex-col flex-grow w-full mx-auto max-w-3xl px-4 py-2 lg:px-0 lg:py-0"
       class:max-w-2xl={!$page.data.layout?.fullWidth}
     >
       <slot />
     </main>
     <footer
-      class="flex items-center justify-center w-full py-4 lg:pb-8 backdrop-brightness-90 backdrop-blur-lg"
+      class="flex items-center justify-center w-full py-4 lg:pb-8 px-4 backdrop-brightness-90 backdrop-blur-lg"
     >
       <p class="flex text-sm gap-1">
-        Created using this awesome template - <svg
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-          class="w-5 h-6 transition fill-teal-500"
-        >
+        <span class="hidden md:inline">Created using this awesome template -</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-6 transition fill-teal-500">
           <path
             fillRule="evenodd"
             clipRule="evenodd"
