@@ -13,7 +13,8 @@
       <div class="col-span-5 md:col-span-4">
         <PostPreview {post}>
           <slot slot="eyebrow">
-            <PostDate class="md:hidden" {post} collapsed decorate />
+            <PostDate class="sm:hidden" {post} decorate />
+            <PostDate class="hidden sm:flex md:hidden" {post} collapsed decorate />
           </slot>
         </PostPreview>
       </div>
