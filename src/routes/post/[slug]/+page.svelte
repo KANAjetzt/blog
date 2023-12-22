@@ -37,8 +37,6 @@
       history.back()
     }
   }
-
-  console.log(data)
 </script>
 
 <svelte:head>

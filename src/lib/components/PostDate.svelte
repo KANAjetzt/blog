@@ -18,12 +18,12 @@
       <span class="h-full w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
     </span>
   {/if}
-  <div class="flex" class:flex-col={!collapsed}>
+  <div class="flex flex-col sm:flex-row md:flex-col">
     <time datetime={post.date}>
       {format(new Date(parseISO(post.date)), 'MMMM d, yyyy')}
     </time>
     {#if collapsed}
-      <span class="mx-1">•</span>
+      <span class="mx-1 hidden sm:inline">•</span>
     {/if}
     <span>{post.readingTime}</span>
   </div>
