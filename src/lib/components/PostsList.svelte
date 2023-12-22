@@ -7,7 +7,7 @@
 
 <div class="flex flex-col gap-16 md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
   {#each posts as post}
-    <article class="grid items-start grid-cols-8 gap-4 md:gap-8">
+    <article class="grid items-start grid-rows-1 grid-cols-8 gap-4 md:gap-8">
       <PostDate class="flex-col hidden md:flex text-sm md:col-span-2" {post} />
 
       <div class="col-span-5 md:col-span-4">
