@@ -1,19 +1,31 @@
-# SvelteKit Blog Template
+<div align="center">
 
-A SvelteKit blog template built on mdsvex and Tailwind.
+<a href="kana.jetzt">
 
-[Demo](https://sveltekit-blog-template.vercel.app)
+ <img alt="KANA Favicon" src="https://github.com/KANAjetzt/blog/assets/41547570/7623f9a6-d8a1-43e4-b44e-ea6140e5b28b" width="100" />
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fmattjennings%2Fsveltekit-blog-template)
+</a>
 
-# Credits
+</div>
 
-- [pngwn](https://github.com/pngwn) for mdsvex and helping me with the `mdsvex-relative-images` plugin
-  - https://github.com/pngwn/MDsveX/discussions/246#discussioncomment-720947
-- Tailwind's ["Spotlight" blog template](https://spotlight.tailwindui.com/)
-  - Overall theme is heavily based on this template
-- All who have contributed!
+<h1 align="center">
+  <a href="kana.jetzt">Personal Blog</a>
+</h1>
 
-  <a href="https://github.com/mattjennings/sveltekit-blog-template/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=mattjennings/sveltekit-blog-template" />
-  </a>
+<br>
+
+<br>
+
+<div align="center">
+
+ <img alt="Screenshot showing 3 panels with item icons and stats" src="https://github.com/KANAjetzt/blog/assets/41547570/8b1422d8-0f5f-4f37-b024-158e414e70de" width="720" />
+
+</div>
+
+## Build With
+
+<ul>
+<li> <a href="https://github.com/sveltejs/kit">SvelteKit</a></li>
+  <li> <a href="https://github.com/tailwindlabs/tailwindcss">Tailwind</a></li>
+<li> <a href="https://github.com/mattjennings/sveltekit-blog-template">SvelteKit Blog template</a></li>
+</ul>
