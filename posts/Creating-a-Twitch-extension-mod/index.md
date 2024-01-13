@@ -31,7 +31,7 @@ I will skip over the authentication part, most of that was handled by Pasha, so 
 
 ## Backend - Godot Brotato Mod
 
-![Brotato title screen screenshot with Twitch login button and data collect toggle button](./mod_screenshot.png)
+![Brotato title screen with Twitch login button and data collect toggle button](./mod_screenshot.png)
 
 ![Diagram local files, auth flow, and data flow](./mod_files.png)
 
@@ -70,7 +70,7 @@ Let's take a peek at what the overlay actually looks like.
 	</summary>
 
 ```js
-;[
+[
   {
     id: '',
     action: 'stats_update',
