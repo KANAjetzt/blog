@@ -62,7 +62,7 @@ Let’s break down what happens inside _[pubsub_sender.gd](https://github.com/KA
 
 Let's take a peek at what the overlay actually looks like.
 
-![twitch overlay showcase](./twitch_overlay.webm)
+![twitch overlay showcase](./twitch_overlay.mp4)
 
 <details open>
 	<summary>
@@ -70,7 +70,7 @@ Let's take a peek at what the overlay actually looks like.
 	</summary>
 
 ```js
-[
+;[
   {
     id: '',
     action: 'stats_update',
@@ -272,7 +272,7 @@ Because each image chunk takes up an entire update, so 3 seconds, I came up with
 
 ## Building the Overlay
 
-![Twitch overlay showcase](./twitch_overlay.webm)
+![Twitch overlay showcase](./twitch_overlay.mp4)
 
 Here is the final product again. Nothing too crazy, just 3 panels, tooltips, and some buttons.  
 The process of actually getting it to run on Twitch as an overlay did take some tinkering.
