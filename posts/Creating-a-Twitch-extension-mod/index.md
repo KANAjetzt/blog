@@ -64,7 +64,7 @@ Let's take a peek at what the overlay actually looks like.
 
 ![twitch overlay showcase](./twitch_overlay.webm)
 
-<details>
+<details open>
 	<summary>
 	👇 Here is one example batch of data that is sent to the Overlay 👇
 	</summary>
