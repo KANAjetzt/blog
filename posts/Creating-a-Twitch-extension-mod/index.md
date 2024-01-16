@@ -9,13 +9,13 @@ preview_image: 'preview.png'
 
 ## Why?
 
-Someone asked for an HTML person on the Brotato Discord to help out in building a Twitch overlay mod, and I'm kind of an HTML person, so I said I'll do it!
+Someone asked for an HTML guy on the Brotato Discord to help out in building a Twitch overlay mod, and I'm an HTML kind a guy, so I said I'll do it!
 
 ## How?
 
-Very good question. I never built something with Twitch APIs before, so I struggled for some time before I managed to set everything up.
+Good question. I never built something with Twitch APIs before, so I struggled for some time before I managed to set everything up.
 
-Luckily, I had help from Pasha, who had asked for the HTML person on Discord. He has some experience in that field for his [TwitchSlaysSpire](https://www.twitch.tv/twitchslaysspire) channel.
+Luckily, I had help from pasha, who has some experience in that field for his  **[TwitchSlaysSpire](https://www.twitch.tv/twitchslaysspire)** channel.
 
 ## Big Picture
 
@@ -51,10 +51,10 @@ Let’s break down what happens inside _[pubsub_sender.gd](https://github.com/KA
 
 ![diagram pubsub sender flow and components](./pubsub_sender.png)
 
-- On a Game Data change, the corresponding "Data Handler" is called and adds data to the corresponding update queue. If that data requires an image upload, the upload image handler is called and adds the image data to the queue.
-- The `SendTimer` calls the "Sender" every 3 seconds. The Sender decides to create an "Update Batch" or a "Catch Up Batch" and sends it to the Twitch Pubsub Endpoint.
-  - An "Update Batch" contains new data from the update queues, new data is added to the catch-up stores.
-  - A "Catch Up Batch" contains old data from the stores.
+- On a Game Data change, the `“Data Handler”` adds data to the corresponding update queue. If that data includes an unknown item or weapon ID the upload image handler adds the image data to the queue.
+- The `SendTimer` calls the `“Sender”` every 3 seconds. The Sender sends an `Update` or `Catch Up Batch` to the Twitch Pubsub Endpoint.
+    - An `Update Batch` contains new data from the update queues.
+    - A `Catch Up Batch` contains old data from the stores.
 
 ![explain meme](/imgs/memes/explain.png)
 
@@ -185,7 +185,7 @@ Let's take a peek at what the overlay actually looks like.
 
 So each type of data is associated with an "action." This action defines what to do with the data. More on that later.
 
-Currently, these are all the actions needed:
+Currently, these are all the possible actions:
 
 ```php
 var send_action_strings := {
@@ -204,7 +204,8 @@ All vanilla images are added directly to the frontend and picked based on the it
 
 ![Modded item icons example showing as blobfish with modded item text](./modded_item_icons.png)
 
-But there exist a lot of cool mods for Brotato, and most of them have their own unique icons. The Blobfish is nice but wasn’t to my full satisfaction. That’s why the Image Upload block exists up there in the overview. I decided to squeeze these 96x96 images over the PubSub wire via base64 string. Here is how this works:
+To allow support for all kind of modded items, I decided to squeeze these 96x96 images over the pubsub wire via base64 string.   
+Here is how this works:
 
 - Check if the image has been uploaded before with `is_image_processed()`.
 - If not, create the base64 string from the `Image` Resource.
@@ -212,7 +213,7 @@ But there exist a lot of cool mods for Brotato, and most of them have their own 
   var base64 := Marshalls.raw_to_base64(image.save_png_to_buffer())
   ```
 - Split that string into chunks. I decided to go with 3500 chars per chunk, leaving a bit of space for the 4 kb limit, just to be safe.
-- Add that image data to the queue, so it is sent by the “Sender".
+- Add the image data to the queue.
   ![Screenshot of Godot Dictionary Editor showing the structure of the image update queue dictionary. Each image is stored by item_id key, and as a dictionary in that dictionary is item_id, base_64_chunks, and base_64_chunk_count.](./upload_queue_image.png)
   ![Screenshot of the base_64_chunks array. It is an array of dictionaries with an index key for the chunk index and a string key for the base64 string.](./image_chunk.png)
 - The “Sender" picks a chunk of image from the `update_queue_image` and adds it to the next update batch.
@@ -238,7 +239,7 @@ With this setup the strings can be pieced together based on there index and we h
 
 ## Catch Up
 
-One issue someone has to solve if someone only sends part of a state to all clients is the fact that all clients that join late to the party missed out on the first batches of data. To solve this, all of the orange part exists up there in the overview.
+One issue with only sending part of a state to all clients is the fact that all clients that join later missed out on the first batches of data. To solve this, all of the orange catch-up part exists in the overview.
 
 ![All variables used to store catch-up data](./catch_up_stores.png)
 
@@ -268,7 +269,8 @@ Each time a chunk of data is sent by the Sender, it is stored in one of the `cat
 
 ![Diagram showing that the pubsub messages are alternating between update and catch-up. Each catch-up itself is alternating between image upload and game data catch-up.](./catchup_timings.png)
 
-Because each image chunk takes up an entire update, so 3 seconds, I came up with this flow for the Sender. Before the Sender fills the batch of data to send, it decides if it is an update or a catch-up. If it is a catch-up, it decides again to send image data or item, stats, and weapon data. With that, the priority is always on the current data, and the pubsub pipe is not clogged up with image chunks.
+Because each image chunk takes up an entire update, I came up with the following flow for the Sender.   
+Before the Sender fills the batch of data to send, it decides if it is an update or a catch-up. If it is a catch-up, it decides again to send image data or item, stats, and weapon data. With that, the priority is always on the current data, and the pubsub pipe is not clogged up with image chunks. 
 
 ## Building the Overlay
 
@@ -279,7 +281,7 @@ The process of actually getting it to run on Twitch as an overlay did take some 
 
 [Extensions](https://dev.twitch.tv/docs/extensions/#build-your-first-extension)
 
-I followed the "build your first extension" part of the Twitch docs; they do a decent enough job of explaining the basic setup. So, at the end, I had a new Extension in my Development Console Dashboard and was ready to start.
+I followed the "build your first extension" part of the Twitch docs. They do a decent enough job of explaining the basic setup. So, at the end, I had a new extension in my Development Console Dashboard and was ready to go.
 
 ### Svelte
 
@@ -314,11 +316,11 @@ In the end, you want to have an HTML file as an entry point or, depending on you
 
 ### SvelteKit
 
-I switched to SvelteKit for a bit, just to allow me to spin up an endpoint for sending test data, so I don’t have to use pubsub all the time during development. In the end, I had to switch back to plain Svelte because I didn’t manage to get an export working without violating the content-security-policies. SvelteKit initializes with inline JS, and that is a no-go for Twitch Extensions. If you know how to get SvelteKit to not do this, please let me know 😶.
+I switched to SvelteKit for a bit, just to allow me to spin up an endpoint for sending test data, so I don’t have to use pubsub all the time during development. Later, I had to switch back to plain Svelte because I didn’t manage to get an export working without violating the content-security-policies. SvelteKit initializes with inline JS, and that is a no-go for Twitch Extensions. If you know how to get SvelteKit to not do this, please let me know 😶.
 
 ### Testing on Twitch
 
-I don’t know why, but I was surprised to learn that I have to run an actual live stream even if I use the “local test” available on the extension dashboard. I think there is an option to do a non-public live stream, but I didn’t bother. Just know you will have to set up a stream to run a proper test for your extension if it is an overlay. With the livestream running and the extension activated, I found some issues. You can’t put any interactions in the bottom 20-30px because of the video player controls, and the open chat window overlaps the extension iframe for some reason, losing an additional 20-30px on the right. Nothing that can’t be fixed with a bit more padding. Also, I highly recommend building and uploading the extension during development a couple of times just to be sure everything works as expected; that is how I stumbled upon the content-security vs. SvelteKit issue.
+I don’t know why, but I was surprised to learn that I have to run an actual live stream even if I use the “local test” available on the extension dashboard. I think there is an option to do a non-public live stream, but I didn’t bother; just know you will have to set up a stream to run a proper test for your extension if it is an overlay. With the live stream running and the extension activated, I found some issues. You can’t put any interactions in the bottom 20-30px because of the video player controls, and the open chat window overlaps the extension iframe for some reason a bit, so additional 20-30px are lost on the right. Nothing that can’t be fixed with a bit more padding. Also, I highly recommend building and uploading the extension during development a couple of times just to be sure everything works as expected; that is how I stumbled upon the content-security vs. SvelteKit issue.
 
 ### How things work on the Frontend
 
@@ -328,7 +330,7 @@ I will not go into great detail because most of the stuff is very basic.
 
 ### Receiving Data / Actions
 
-To receive the pubsub messages from the backend, the Twitch JS helper is used. It is directly loaded from Twitch in the entry HTML file.
+To receive the pubsub messages from the backend, the Twitch JS Helper is used. It is directly loaded from Twitch in the entry HTML file.
 
 ```html
 <script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
@@ -352,7 +354,7 @@ It also keeps the received `game_data` in memory and stores all `handled_actions
 
 ### BB Code
 
-Something a bit non-standard is the parsing of the BB Code used in the item and weapon effect / stat text. There are a couple of BB Code parsers out there, and I decided on [BBob](https://github.com/JiLiZART/BBob). Thankfully, with Svelte, it’s possible to just use the HTML renderer. It can parse all the BB Code used in Brotato. So we can just grab the full text string, send it through the parser, and output the raw HTML with `[@html](https://svelte.dev/docs/special-tags#html)`. Some strings have references to stat icons, so I use `replaceAll()` to replace references to `'res://items/stats’` with `stat_icons` to point them to the stat icons in the `static` directory. With that, it was quite easy to get the look and feel of the in-game UI for the tooltips.
+Something a bit non-standard is the parsing of the BB Code used in the item and weapon effect/stat text. There are a couple of BB Code parsers out there, and I decided on [BBob](https://github.com/JiLiZART/BBob). Thankfully, with Svelte, it’s possible to just use the default HTML renderer. It can parse all the BB Code used in Brotato. Just grab the full text string, send it through the parser, and output the raw HTML with `[@html](https://svelte.dev/docs/special-tags#html)`. Some strings have references to stat icons, so I use `replaceAll()` to replace references to `'res://items/stats’` with `stat_icons` to point them to the static files. With that, it was easy to get the look and feel of the in-game UI for the tooltips.
 
 ![Video of the working tooltip](./tooltip.mp4)
 
@@ -360,7 +362,7 @@ Something a bit non-standard is the parsing of the BB Code used in the item and 
 
 Nothing crazy here, so I'll just add some quick bullet points about the used animations.
 
-- I used the **Animating height** example from this article to animate the height of the Item Panel.
+- I used the **Animating height** example from this article for the Item Panel.
   [Svelte and Spring Animations | CSS-Tricks](https://css-tricks.com/svelte-and-spring-animations/)
 - Built-in transitions for the settings panel and tooltip.
   - [svelte/transition docs](https://svelte.dev/docs/svelte-transition)
