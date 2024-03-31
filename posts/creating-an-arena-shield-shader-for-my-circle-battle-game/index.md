@@ -1,6 +1,6 @@
 ---
 title: Creating an Arena Shield Shader for my Circle Battle Game
-date: 2024-01-29
+date: 2024-02-29
 cover: 'cover.png'
 cover_alt: 'Circle with Fresnel effect and a '
 preview: Here is how I ended up with my wobbly Arena Shield for Circle Pusher®.
