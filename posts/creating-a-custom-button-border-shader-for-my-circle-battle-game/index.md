@@ -11,6 +11,7 @@ preview_image: 'preview.png'
 Here is what I ended up with:
 
 ![Video showcasing a single button with a gradient and border-radius.](./button_0.mp4)
+
 ![Video showcasing the Buttons on the tile screen changing colors based on the distance to the circles.](./button_1.mp4)
 
 And here is the shader if you just want to copy paste it real quick ( you probably want to remove the `_circle_distances` stuff ):
@@ -68,11 +69,15 @@ void fragment() {
 </details>
 
 ## Why a custom shader for a button border?
-I wanted to add a simple gradient to my button border, turns out that is not as easy with the build in theme functionality as I was hoping for.
+I intended to add a simple border gradient using the build in theme functionality, sadly that is not as easy as I was hoping for.   
+*There are some [proposals](https://github.com/godotengine/godot-proposals/issues/6812) to extend the functionality of `StyleBox`.*
+
 
 ![Screenshot of the Godot Theme Editor](./theme_editor.png)
 
 After looking into a couple of [creative ways](https://github.com/godotengine/godot-proposals/issues/2564#issuecomment-816572528) to work around the limitations, I decided to try a SDF Box shader.
+
+
 
 ## SDF - Signed Distance Functions
 I will not go into the detailed maths of an SDF there are actual math masters out there I can link to.
@@ -83,13 +88,15 @@ The basics for this shader are here:
 ## The Process
 Like most shader work ( that I do ) the journey begins by copy-pasting some [shadertoy code](https://www.shadertoy.com/view/Nlc3zf) into your canvas_item shader.
 
+<iframe width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/Nlc3zf?gui=true&t=10&paused=false&muted=false" allowfullscreen></iframe>
+
 ### Aspect Ratio
 It didn't take to long to get the desired rounded border on the screen, as long as the `ColorRect` stayed quadratic.
 The pain started as I tried to figure out how in the world I adapt the shader to the aspect ratio of the `ColorRect`.
 Because I would argue most of the time a button will not be exactly quadratic.
 
-I will keep it nice and short here is the answer:
-"Pass the size of the color rect as a uniform to your shader" 🎉
+I will keep it nice and short here is the answer:  
+**🎉 "Pass the size of the color rect as a uniform to your shader" 🎉**
 
 You can do this by connecting to the `resized` signal of the control and doing something like this:
 
@@ -98,7 +105,7 @@ func _on_color_rect_resized() -> void:
 	color_rect.material.set_shader_parameter("_aspect_ratio", color_rect.size.x / color_rect.size.y)
 ```
 
-Here is [a link to a proposal](https://github.com/godotengine/godot-proposals/issues/8274) to add a build-in way to obtain the aspect ratio of a control in a shader.
+Here is a [proposal](https://github.com/godotengine/godot-proposals/issues/8274) to add a build-in way to obtain the aspect ratio of a control in a shader.
 
 Now with the aspect ratio in the shader you can start putting it to the right numbers.   
 For the box shader that would be here:
@@ -164,7 +171,7 @@ Then I passed the colors of each circle to the shader, and now the buttons have 
 
 ![Video showcasing the Buttons on the tile screen changing colors based on the distance to the circles.](./button_1.mp4)
 
-Done! The biggest hurdle was to figure out that you have to pass the size of the element via GDScript but now I know 😅 
+Done! The biggest hurdle was to figure out that you have to pass the size of the element via GDScript to the shader 😅 
 
 ## Title Texture
 Just a quick side note, for the title I used a mask texture 
@@ -197,7 +204,6 @@ void fragment() {
 	COLOR.a = mask_color.a;
 }
 ```
-
 
 ## Quick recap
 - Copied [SDF Shader from Shadertoy](https://www.shadertoy.com/view/Nlc3zf)
