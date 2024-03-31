@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="kana.jetzt">
+<a href="https://kana.games/">
 
  <img alt="KANA Favicon" src="https://github.com/KANAjetzt/blog/assets/41547570/7623f9a6-d8a1-43e4-b44e-ea6140e5b28b" width="100" />
 
@@ -9,7 +9,7 @@
 </div>
 
 <h1 align="center">
-  <a href="kana.jetzt">Personal Blog</a>
+  <a href="https://kana.games/">Personal Blog</a>
 </h1>
 
 <br>
