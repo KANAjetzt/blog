@@ -3,7 +3,7 @@ title: Creating a Custom Button Border Shader for my Circle Battle Game
 date: 2024-03-31
 cover: 'cover.png'
 cover_alt: 'Button with WOW NICE BUTTON! as text and a green to purple border gradient with border-radius.'
-preview: Here is how and why I build a border shader for my buttons in Circle Pusher®.
+preview: Here is how and why I built a border shader for my buttons in Circle Pusher®.
 preview_image: 'preview.png'
 ---
 
@@ -14,7 +14,7 @@ Here is what I ended up with:
 
 ![Video showcasing the Buttons on the tile screen changing colors based on the distance to the circles.](./button_1.mp4)
 
-And here is the shader if you just want to copy paste it real quick ( you probably want to remove the `_circle_distances` stuff ):
+And here is the shader if you just want to copy-paste it real quick ( you probably want to remove the `_circle_distances` stuff ):
 
 <details open>
 	<summary>
@@ -50,7 +50,7 @@ void fragment() {
     vec2 position = (2.0 * uv_mod - TEXTURE_PIXEL_SIZE);
     vec2 halfSize = vec2(_aspect_ratio - 0.1, 0.90);
 	float cornerRadius = _corner_radius;
-    // Calculate signed distance to the shape
+    // Calculate the signed distance to the shape
     float d = box(position, halfSize, cornerRadius);
 
     // Apply smoothing
@@ -69,7 +69,7 @@ void fragment() {
 </details>
 
 ## Why a custom shader for a button border?
-I intended to add a simple border gradient using the build in theme functionality, sadly that is not as easy as I was hoping for.   
+I intended to add a simple border gradient using the built in theme functionality, sadly that is not as easy as I was hoping for.   
 *There are some [proposals](https://github.com/godotengine/godot-proposals/issues/6812) to extend the functionality of `StyleBox`.*
 
 
@@ -105,7 +105,7 @@ func _on_color_rect_resized() -> void:
 	color_rect.material.set_shader_parameter("_aspect_ratio", color_rect.size.x / color_rect.size.y)
 ```
 
-Here is a [proposal](https://github.com/godotengine/godot-proposals/issues/8274) to add a build-in way to obtain the aspect ratio of a control in a shader.
+Here is a [proposal](https://github.com/godotengine/godot-proposals/issues/8274) to add a built-in way to obtain the aspect ratio of a control in a shader.
 
 Now with the aspect ratio in the shader you can start putting it to the right numbers.   
 For the box shader that would be here:
