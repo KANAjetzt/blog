@@ -19,7 +19,7 @@ If you want to experience this high-octane gameplay yourself, hop over to [the i
 
 ## The Jam
 
-I joined the little niche game jam called [Ludum Dare](https://ldjam.com/events/ludum-dare/55), it is actually the 55th time the event is held, and the theme was **Summoning.** My original plan was to compete in the compo format where you have to do everything yourself (not a big issue if you have no team 😥) and from scratch (game engines are allowed but all assets etc.) in 48 hours. For me, the jam starts at 3 a.m. on Saturday. I knew I will have very little or no time on my PC on Saturday, so I had a whole day to come up with a great idea while I rip and tear the chimney out of my house 😄
+I joined the little niche game jam called [Ludum Dare](https://ldjam.com/events/ludum-dare/55), it is actually the 55th time the event is held, and the theme was **Summoning.** My original plan was to compete in the compo format where you have to do everything yourself (not a big issue if you have no team 🥲) and from scratch (game engines are allowed but all assets etc.) in 48 hours. For me, the jam starts at 3 a.m. on Saturday. I knew I will have very little or no time on my PC on Saturday, so I had a whole day to come up with a great idea while I rip and tear the chimney out of my house 😄
 
 ## The Idea
 
