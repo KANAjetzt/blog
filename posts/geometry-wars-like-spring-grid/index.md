@@ -156,7 +156,7 @@ I followed the tutorial and translated it into GDScript. In the process, I creat
 
 </details>
 
-### point_mass.gd
+### poinMass.gd
 
 - Represents a point of mass in the grid (🤯)
 
@@ -211,7 +211,7 @@ I followed the tutorial and translated it into GDScript. In the process, I creat
 	Code
 	</summary>
 
-    ```php
+```php
     class_name Spring
     extends RefCounted
 
@@ -250,7 +250,7 @@ I followed the tutorial and translated it into GDScript. In the process, I creat
     	end_1.apply_force(-force)
     	end_2.apply_force(force)
 
-````
+```
 
 </details>
 
@@ -262,7 +262,7 @@ Now, add a new grid to a scene:
 func _ready() -> void:
 	grid = Grid.new(Vector2(40, 40), Vector2(1, 1))
 	add_child(grid)
-````
+```
 
 and apply some force to the grid to see the springs in action:
 
