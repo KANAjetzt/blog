@@ -81,7 +81,7 @@ Here are the game mechanics we wrote down and what we ended up with in the final
 
 ## Building the Game
 
-You can check out the full dev log with progress GIFs here ➡️
+[You can check out the full dev log with progress GIFs here ➡️](/post/flashIT-MFGJ-24-devlog)
 
 ### Week 1
 
