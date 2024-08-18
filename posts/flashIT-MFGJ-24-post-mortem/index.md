@@ -56,9 +56,9 @@ Guess which one made the cut.
 
 I tried really hard to avoid building a straight-up puzzle game because I thought it would be way too hard to design fun puzzles. But for unknown reasons we chose this idea over all the deep and thoughtful ones 😄
 
-We actually created a small [Game Design Doc](https://www.nuclino.com/articles/game-design-document-template) in the hope of keeping us focused.
+We created a small [Game Design Doc](https://www.nuclino.com/articles/game-design-document-template) in the hope of keeping us focused.
 
-Here are the game mechanics we wrote down for that and what we ended up with:
+Here are the game mechanics we wrote down and what we ended up with in the final game:
 
 - **Fixed Player Position:** The player cannot move from their starting position in the arena. They can rotate and aim freely within their view.
   - Instead of not allowing the player to move, we restricted the player to a predefined area. The player can jump and move around while throwing, allowing for more variety in approaching a level.
@@ -66,6 +66,7 @@ Here are the game mechanics we wrote down for that and what we ended up with:
   - It is the primary tool, and that’s why the default amount per level is variable now 😄
 - **Teammate Visibility:** Some teammates are hidden from direct sight, requiring players to use the mini-map and environment to reach them.
   - Well, the teammate part fully went away because it’s a lot easier to explain the premise of destroying your enemies than your teammates (at least for people who haven’t played competitive shooters with flashes). The enemies are almost always behind cover, so we got that part covered. The mini-map didn’t make it, but the enemies can be seen through walls.
+    ![Enemy with X-Ray Shader applied, visible through a wall.](./Enemy.png)
 - **Throw Mechanic:** Physics-based, allowing for strategic bounces and throws. The player must consider angles and surfaces to reach out-of-sight teammates.
   - I added an additional light throw and the option to "cook" the flash by holding the mouse button.
 - **Arena Design:** Includes walls and other objects that influence the flash's trajectory and spread.
@@ -76,7 +77,7 @@ Here are the game mechanics we wrote down for that and what we ended up with:
 - **Scoring System:** Points awarded based on the number of throws, time taken, and any additional objectives.
   - Made it in. But I’m not sure if it was worth it. I spend two days adding it into the game.
 - **Levels:** A progression system with gradually increasing difficulty.
-  - I added a simple system to lock and unlock levels, but it wasn’t used in the jam because I didn’t want to block anyone from trying all levels. In a more developed version I can see blocking of chunks of levels based on a global score.
+  - I added a simple system to lock and unlock levels, but it wasn’t used in the jam because I didn’t want to block anyone from trying all levels. In a more developed version I might block of chunks of levels based on a global score.
 
 ## Building the Game
 
@@ -84,14 +85,13 @@ You can check out the full dev log with progress GIFs here ➡️
 
 ### Week 1
 
-The first two days were spent in the concept phase, building out ideas. After deciding on the flashing game, I started by creating my to-dos for the prototype. I use Notion and just start adding things I already know I need (assets, SFX, systems I have to code). I don’t go into great detail with that list. I just want a general overview at the start. Once I tackle a point, I add more details. Added FP Controls, the flash, and the first 3 levels. My plan was to have a feature-complete MVP so I could spend the second week fully working on polish, visuals, and sound.
+The first two days were spent in the concept phase, building out ideas. After deciding on the flashing game, I started creating my to-dos. I keep it very simple at the beginning, once I tackle a point, I add more details. I worked my way through the points and created FP Controls, the flash, and the first 3 levels. My plan was to have a feature-complete MVP at the end of week one so I could spend the second week fully working on polish, visuals, and sound.
 
 ![Progress after one week](https://res.cloudinary.com/kana/video/upload/v1723980786/MFGJ-24/exmk6mggo639h2xt8vzc.mp4)
 
-
 ### Week 2
 
-It turns out building a point system can be quite a heavy task, so I kept coding for two additional days before I was able to focus on visuals. On day 11, I started working on the cyberpunk/cyberspace and added a lot of [particle volumes](https://docs.godotengine.org/en/stable/tutorials/3d/particles/complex_shapes.html) in the process. The last two days I spend on ambience, SFX, UI icons, scoreboard, game restart.
+It turns out building a point system can be quite a heavy task, so I kept coding for two additional days before I was able to focus on visuals. On day 11, I started working on the cyberpunk/cyberspace and added a lot of [particle volumes](https://docs.godotengine.org/en/stable/tutorials/3d/particles/complex_shapes.html) in the process. The last two days I spend on ambience, SFX, UI icons, scoreboard and the possibility to restart the game.
 
 ![Progress after two weeks](https://res.cloudinary.com/kana/video/upload/v1723980868/MFGJ-24/jrmyq8rfblqp7zl3ewya.mp4)
 
@@ -130,10 +130,10 @@ I have lot's of ideas:
 Also, playtest feedback:
 
 - Make level completion more clear.
-  - Maybe by adding a level complete camera transition (could get annoying), or by changing the exit portal colors. Even toggling the portal based on flash and enemy count would be something.
+  - Maybe by adding a level complete camera transition (might get annoying), or by changing the exit portal colors. Even toggling the portal based on flash and enemy count would be something.
 - Add a top view or mini-map to give the player a better overview of the level.
 
-So, lots of stuff that could be done, but I’m currently still working on my previous submitted game, [Circle Pusher](https://kanamedia.itch.io/circle-pusher) and I’m more excited about couch co-op or multiplayer shenanigans than single-player puzzles. Even if the open points sound fun to work on!
+So, lots of possibilities, but I’m currently still working on my previous submitted game, [Circle Pusher](https://kanamedia.itch.io/circle-pusher) and I’m more excited about couch co-op or multiplayer shenanigans than single-player puzzles. Even if the open points sound fun to work on!
 
 ## That’s It!
 
